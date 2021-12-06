@@ -28,6 +28,42 @@
   color: #61dafb;
 }
 
+.image-display {
+  max-width: 100%;
+}
+.arrows {
+  /*background-color: white;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;*/
+  margin: 2px 2px;
+  cursor: pointer;
+  border: none;
+  padding: 10px 15px;
+  position: absolute;
+  top: 50%;
+  background-color: white;
+  border-radius: 50%;
+}
+.leftArrow {
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.rightArrow {
+  -ms-transform: translateY(-50%);
+  transform: translateX(-120%);
+}
+
+.active {
+  background-color: blue;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
