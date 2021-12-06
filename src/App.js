@@ -49,21 +49,19 @@ function onArrowClick(direction, index, setIndex) {
   }
 }
 // 
-function DotNavItem({dotIndex, setImageIndex, activeIndex, setActiveIndex}) {
+function DotNavItem({dotIndex, activeIndex, setActiveIndex}) {
   return (<button className={`dotItem ${activeIndex === dotIndex ? "active" : ""}`} key={`dot + ${dotIndex}`}
   onClick={() => {
-    setImageIndex(dotIndex);
     setActiveIndex(dotIndex);
   }}/>);
 }
 
-function ImageNavigation({setIndex}) {
-  const [activeIndex, setActiveIndex] = useState(0);
+function ImageNavigation({setActiveIndex, activeIndex}) {
   let dotNavList=[];
-  images.forEach((image,index)=>{
-    dotNavList.push(<DotNavItem dotIndex={index} setImageIndex={setIndex} activeIndex={activeIndex} setActiveIndex={setActiveIndex}/>)
+  images.forEach((image,dotIndex)=>{
+    dotNavList.push(<DotNavItem dotIndex={dotIndex} activeIndex={activeIndex} setActiveIndex={setActiveIndex}/>)
   });
-  return (<>{dotNavList}</>)
+  return (<div className={"imageNavigation"}>{dotNavList}</div>)
 }
 
 function Gallery() {
@@ -71,9 +69,11 @@ function Gallery() {
 
   return (<>
     <ArrowButton direction="left" setIndex={setIndex} index={index}/>
-    <ImageView index={index}/>
+    <div class="trim">
+      <ImageView index={index}/>
+    </div>
     <ArrowButton direction="right" setIndex={setIndex} index={index}/>
-    <ImageNavigation setIndex={setIndex} />
+    <ImageNavigation setActiveIndex={setIndex} activeIndex={index}/>
   </>);
 }
 function App() {
